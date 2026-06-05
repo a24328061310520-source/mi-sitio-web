@@ -1,0 +1,37 @@
+{
+  "personajes": [
+    {"ID": 1, "Nombre": "Peter Parker", "Alias": "Spider-Man", "FechaDeCreacion": "1962-08-01", "Descripcion": "El superhéroe que teje telarañas."},
+    {"ID": 2, "Nombre": "Tony Stark", "Alias": "Iron Man", "FechaDeCreacion": "1963-03-01", "Descripcion": "Genio, multimillonario, playboy y filántropo."},
+    {"ID": 3, "Nombre": "Steve Rogers", "Alias": "Captain America", "FechaDeCreacion": "1941-03-01", "Descripcion": "El supersoldado con el escudo indestructible."},
+    {"ID": 4, "Nombre": "Natasha Romanoff", "Alias": "Black Widow", "FechaDeCreacion": "1964-04-01", "Descripcion": "Espía y luchadora experta."},
+    {"ID": 5, "Nombre": "Bruce Banner", "Alias": "Hulk", "FechaDeCreacion": "1962-05-01", "Descripcion": "Se convierte en un gigante verde cuando se enfurece."}
+  ],
+  "comics": [
+    {"ID": 1, "Titulo": "The Amazing Spider-Man #1", "AnioPublicacion": 1963, "Descripcion": "El debut de Spider-Man."},
+    {"ID": 2, "Titulo": "Tales of Suspense #39", "AnioPublicacion": 1963, "Descripcion": "El nacimiento de Iron Man."},
+    {"ID": 3, "Titulo": "Captain America Comics #1", "AnioPublicacion": 1941, "Descripcion": "La primera aparición del Capitán América."},
+    {"ID": 4, "Titulo": "Tales of Suspense #52", "AnioPublicacion": 1964, "Descripcion": "La presentación de Black Widow."},
+    {"ID": 5, "Titulo": "The Incredible Hulk #1", "AnioPublicacion": 1962, "Descripcion": "El primer cómic de Hulk."}
+  ],
+  "superpoderes": [
+    {"ID": 1, "Nombre": "Trepar paredes", "Descripcion": "Spider-Man puede adherirse a surfaces verticales y techos."},
+    {"ID": 2, "Nombre": "Traje de Iron Man", "Descripcion": "Tony Stark utiliza una armadura con numerosas habilidades."},
+    {"ID": 3, "Nombre": "Suero del supersoldado", "Descripcion": "Steve Rogers obtiene fuerza y agilidad sobrehumanas."},
+    {"ID": 4, "Nombre": "Espionaje y combate", "Descripcion": "Black Widow es experta en espionaje y combate mano a mano."},
+    {"ID": 5, "Nombre": "Transformación", "Descripcion": "Bruce Banner se convierte en Hulk con una gran fuerza."}
+  ],
+  "personajecomic": [
+    {"PersonajeID": 1, "ComicID": 1},
+    {"PersonajeID": 2, "ComicID": 2},
+    {"PersonajeID": 3, "ComicID": 3},
+    {"PersonajeID": 4, "ComicID": 4},
+    {"PersonajeID": 5, "ComicID": 5}
+  ],
+  "personajesuperpoder": [
+    {"PersonajeID": 1, "SuperpoderID": 1},
+    {"PersonajeID": 2, "SuperpoderID": 2},
+    {"PersonajeID": 3, "SuperpoderID": 3},
+    {"PersonajeID": 4, "SuperpoderID": 4},
+    {"PersonajeID": 5, "SuperpoderID": 5}
+  ]
+}

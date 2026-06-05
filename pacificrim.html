@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Eduardo Mizael Ruiz Santiago</title>
+</head>
+<body>
+
+<nav class="navbar navbar-default" style="background:#0d3f63; border:none; border-radius: 0;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+                <span class="icon-bar" style="background:white"></span>
+                <span class="icon-bar" style="background:white"></span>
+                <span class="icon-bar" style="background:white"></span>
+            </button>
+            <a class="navbar-brand" href="index.html" style="color: white; font-weight: bold;">Inicio</a>
+        </div>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="nav navbar-nav">
+                <li><a href="pacificrim.html" style="color:white; font-weight: bold; background: rgba(255,255,255,0.1);">Registrar Jaeger</a></li>
+                <li><a href="index1.html" style="color:white; font-weight: bold;">Ver Jaegers</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="mi-container">
+    <h1>Registro de Jaeger</h1>
+
+    <form id="formulario-jaeger">
+        <div class="form-group">
+            <label>Nombre del Jaeger:</label>
+            <input type="text" class="mi-input" id="nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label>País:</label>
+            <input type="text" class="mi-input" id="pais" required>
+        </div>
+
+        <div class="form-group">
+            <label>Generación:</label>
+            <input type="number" class="mi-input" id="generacion" required>
+        </div>
+
+        <div class="form-group">
+            <label>Altura en metros:</label>
+            <input type="number" step="0.01" class="mi-input" id="altura_m" required>
+        </div>
+
+        <div class="form-group">
+            <label>Peso en toneladas:</label>
+            <input type="number" class="mi-input" id="peso_ton" required>
+        </div>
+
+        <div class="form-group">
+            <label>Estado:</label>
+            <select class="mi-input" id="estado" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Activo">Activo</option>
+                <option value="Destruido">Destruido</option>
+                <option value="Retirado">Retirado</option>
+            </select>
+        </div>
+
+        <button type="submit" class="mi-btn">Registrar</button>
+    </form>
+</div>
+
+<script src="db.js"></script>
+<script>
+    document.getElementById('formulario-jaeger').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const nombreVal = document.getElementById('nombre').value.trim();
+        const paisVal = document.getElementById('pais').value.trim();
+        const genVal = parseInt(document.getElementById('generacion').value) || 0;
+        const altVal = parseFloat(document.getElementById('altura_m').value) || 0.0;
+        const pesoVal = parseInt(document.getElementById('peso_ton').value) || 0;
+        const estadoVal = document.getElementById('estado').value;
+
+        db.ready.then(() => {
+            db.insert('pacific_rim', 'jaegers', {
+                nombre: nombreVal,
+                pais: paisVal,
+                generacion: genVal,
+                altura_m: altVal,
+                peso_ton: pesoVal,
+                estado: estadoVal
+            });
+
+            // Redirigir a la lista de Jaegers
+            window.location.href = 'index1.html';
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "bandos": [
+    {"id_bando": 1, "nombre": "Bueno"},
+    {"id_bando": 2, "nombre": "Malo"}
+  ],
+  "personajes": [
+    {"id_personaje": 1, "nombre": "Yuji Itadori", "tipo": "Hechicero", "id_bando": 1},
+    {"id_personaje": 2, "nombre": "Satoru Gojo", "tipo": "Hechicero", "id_bando": 1},
+    {"id_personaje": 3, "nombre": "Sukuna", "tipo": "Maldicion", "id_bando": 2},
+    {"id_personaje": 4, "nombre": "Mahito", "tipo": "Maldicion", "id_bando": 2},
+    {"id_personaje": 7, "nombre": "Megumi Fushiguro", "tipo": "Hechicero", "id_bando": 1},
+    {"id_personaje": 8, "nombre": "Nobara Kugisaki", "tipo": "Hechicero", "id_bando": 1},
+    {"id_personaje": 9, "nombre": "Maki Zenin", "tipo": "Hechicero", "id_bando": 1},
+    {"id_personaje": 10, "nombre": "Toge Inumaki", "tipo": "Hechicero", "id_bando": 1},
+    {"id_personaje": 11, "nombre": "Panda", "tipo": "Hechicero", "id_bando": 1},
+    {"id_personaje": 12, "nombre": "Kento Nanami", "tipo": "Hechicero", "id_bando": 1},
+    {"id_personaje": 13, "nombre": "Yuta Okkotsu", "tipo": "Hechicero", "id_bando": 1},
+    {"id_personaje": 14, "nombre": "Ryomen Sukuna", "tipo": "Maldicion", "id_bando": 2},
+    {"id_personaje": 16, "nombre": "Suguru Geto", "tipo": "Maldicion", "id_bando": 2},
+    {"id_personaje": 17, "nombre": "Jogo", "tipo": "Maldicion", "id_bando": 2},
+    {"id_personaje": 18, "nombre": "Hanami", "tipo": "Maldicion", "id_bando": 2},
+    {"id_personaje": 19, "nombre": "Dagon", "tipo": "Maldicion", "id_bando": 2},
+    {"id_personaje": 20, "nombre": "Toji Fushiguro", "tipo": "Asesino", "id_bando": 2}
+  ],
+  "tecnicas": [
+    {"id_tecnica": 1, "nombre": "Black Flash"},
+    {"id_tecnica": 2, "nombre": "Limitless"},
+    {"id_tecnica": 3, "nombre": "Dominio Maldito"}
+  ],
+  "personaje_tecnica": [
+    {"id": 1, "id_personaje": 1, "id_tecnica": 1},
+    {"id": 2, "id_personaje": 2, "id_tecnica": 2},
+    {"id": 3, "id_personaje": 3, "id_tecnica": 3},
+    {"id": 4, "id_personaje": 4, "id_tecnica": 3}
+  ]
+}

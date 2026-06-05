@@ -1,0 +1,16 @@
+{
+  "linterna_verde": [
+    {
+      "id": 1,
+      "nombrereal": "Hal Jordan",
+      "personaje": "Green Lantern",
+      "altura": 1.88,
+      "peso": 86,
+      "poderes": "Creación de constructos de energía pura mediante anillo de voluntad.",
+      "sexo": "Masculino",
+      "debilidad": "Impureza amarilla (miedo)",
+      "creation": "1959-10-01",
+      "biografia": "Un piloto de pruebas de la Fuerza Aérea que se une a la corporación intergaláctica Green Lantern Corps."
+    }
+  ]
+}

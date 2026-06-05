@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="estilopelicula.css">
+<link href="https://fonts.cdnfonts.com/css/screamous" rel="stylesheet">
+                
+    <title>Eduardo Mizael Ruiz Santiago</title>
+</head>
+<body>
+
+        
+    <div class="container">
+      <h1>mi pagina de peliculas</h1>
+     
+    <form id="form">
+        <input type="text"id="search" placeholder="guerra mundial z">
+    <input type="submit">
+    </form>
+    </div>
+  <script>
+//En esta línea se define la URL de la API para obtener la lista de películas.
+const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1';
+
+//Esta línea define la URL de la API para obtener las imágenes de las películas.
+const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
+
+//En esta línea se define la URL de la API para buscar películas.
+const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query=';
+
+
+//AÑADIR ESTO ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
+const main = document.createElement('main');
+main.id = 'main';
+document.body.appendChild(main);
+
+const form = document.getElementById('form');
+const search = document.getElementById('search');
+
+getMovie(API_URL);
+
+async function getMovie(url) {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    showMovies(data.results);
+}
+
+//Esta función crea los elementos del HTML para mostrar cada película en la lista.
+function showMovies(movies){
+
+    main.innerHTML = '';
+
+    movies.forEach((movie) => {
+
+        const {title, poster_path, vote_average, overview, release_date} = movie;
+
+        const movieEl = document.createElement('div');
+
+        movieEl.classList.add('movie');
+
+        movieEl.innerHTML = `
+            <img src="${IMG_PATH + poster_path}" alt="${title}">
+
+            <div class="movie-info">
+                <h3>${title}</h3>
+                <span class="${getClassByRate(vote_average)}">
+                    ${vote_average}
+                </span>
+            </div>
+
+            <div class="overview">
+                <h3>Sinopsis</h3>
+                ${overview}
+
+                <br><br>
+
+                <strong>Fecha:</strong> ${release_date}
+            </div>
+        `;
+
+        main.appendChild(movieEl);
+    });
+}
+
+function getClassByRate(vote) {
+
+    if(vote >= 8){
+        return 'green';
+    } else if(vote >= 5){
+        return 'orange';
+    } else {
+        return 'red';
+    }
+}
+
+form.addEventListener('submit', (e) => {
+
+    e.preventDefault();
+
+    const searchTerm = search.value;
+
+    if(searchTerm && searchTerm !== '') {
+
+        getMovie(SEARCH_API + searchTerm);
+
+        search.value = '';
+
+    } else {
+        window.location.reload();
+    }
+
+});
+
+//AÑADIR ESTO ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+</script>
+</body>
+</html>

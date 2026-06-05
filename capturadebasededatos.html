@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.cdnfonts.com/css/praktys" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <title>Eduardo Mizael Ruiz Santiago</title>
+
+    <style>
+        :root{
+            --azul: #3b82f6;
+            --cian: #22d3ee;
+            --morado: #8b5cf6;
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)),
+            url('https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/02/Jujutsu-Kaisen-Gojo.jpg');
+            background-size: cover;
+            background-position: center 15%;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .navbar{
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            border-radius: 0;
+        }
+
+        .navbar a{
+            color: #22d3ee !important;
+            font-weight: bold;
+        }
+
+        .navbar a:hover{
+            color: white !important;
+        }
+
+        .contenedor-formulario {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        h1{
+            font-family: 'Praktys', sans-serif;
+            font-size: 38px;
+            text-shadow: 0 0 10px #3b82f6;
+            text-align: center;
+            color: #22d3ee;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #22d3ee;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #3b82f6;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            border-color: #8b5cf6;
+            outline: none;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Inicio</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="mostrar.html">Mostrar Datos</a></li>
+      <li><a href="meterdatos.html">Meter Datos</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Unidad 2 <span class="caret"></span></a>
+        <ul class="dropdown-menu" style="background-color: #000;">
+          <li><a href="relacionales01.html">Relacionales 1</a></li>
+          <li><a href="relacionales02.html">Relacionales 2</a></li>
+          <li><a href="capturadebasededatos.html">Captura de base de datos</a></li>
+          <li><a href="pacificrim.html">Pacific Rim</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="contenedor-formulario">
+                <h1>Agregar Personaje de Marvel</h1>
+                <form id="formulario-marvel">
+
+                    <label for="nombre">Nombre Real:</label>
+                    <input type="text" id="nombre" required placeholder="Ej. Peter Parker">
+
+                    <label for="alias">Alias / Superhéroe:</label>
+                    <input type="text" id="alias" required placeholder="Ej. Spider-Man">
+
+                    <label for="fecha_creacion">Fecha de Creación:</label>
+                    <input type="date" id="fecha_creacion" required>
+
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" rows="3" required placeholder="Ej. El superhéroe que teje telarañas..."></textarea>
+
+                    <label for="comics">Cómics (separados por comas):</label>
+                    <input type="text" id="comics" placeholder="Ej. The Amazing Spider-Man #1, Tales of Suspense #39" required>
+
+                    <label for="superpoderes">Superpoderes (separados por comas):</label>
+                    <input type="text" id="superpoderes" placeholder="Ej. Trepar paredes, Fuerza, Sentido Arácnido" required>
+
+                    <input type="submit" value="Guardar Personaje y Relaciones">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="db.js"></script>
+<script>
+    document.getElementById('formulario-marvel').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const nombreVal = document.getElementById('nombre').value.trim();
+        const aliasVal = document.getElementById('alias').value.trim();
+        const fechaVal = document.getElementById('fecha_creacion').value;
+        const descVal = document.getElementById('descripcion').value.trim();
+        
+        // Parsear listas separadas por comas
+        const comicsList = document.getElementById('comics').value.split(',').map(s => s.trim()).filter(Boolean);
+        const poderesList = document.getElementById('superpoderes').value.split(',').map(s => s.trim()).filter(Boolean);
+
+        db.ready.then(() => {
+            // 1. Insertar Personaje
+            const personajeId = db.insert('c_r_o', 'personajes', {
+                Nombre: nombreVal,
+                Alias: aliasVal,
+                FechaDeCreacion: fechaVal,
+                Descripcion: descVal
+            }, 'ID');
+
+            // 2. Procesar e insertar cómics, y crear relaciones
+            const comics = db.get('c_r_o', 'comics');
+            const personajecomic = db.get('c_r_o', 'personajecomic');
+
+            comicsList.forEach(comicTitulo => {
+                let comic = comics.find(c => c.Titulo.toLowerCase() === comicTitulo.toLowerCase());
+                let comicId;
+
+                if (comic) {
+                    comicId = comic.ID;
+                } else {
+                    comicId = db.insert('c_r_o', 'comics', {
+                        Titulo: comicTitulo,
+                        AnioPublicacion: new Date().getFullYear(),
+                        Descripcion: 'Cómic agregado automáticamente'
+                    }, 'ID');
+                }
+
+                // Insertar relación
+                personajecomic.push({
+                    PersonajeID: personajeId,
+                    ComicID: comicId
+                });
+            });
+            db.saveTable('c_r_o', 'personajecomic', personajecomic);
+
+            // 3. Procesar e insertar superpoderes, y crear relaciones
+            const superpoderes = db.get('c_r_o', 'superpoderes');
+            const personajesuperpoder = db.get('c_r_o', 'personajesuperpoder');
+
+            poderesList.forEach(poderNombre => {
+                let poder = superpoderes.find(s => s.Nombre.toLowerCase() === poderNombre.toLowerCase());
+                let poderId;
+
+                if (poder) {
+                    poderId = poder.ID;
+                } else {
+                    poderId = db.insert('c_r_o', 'superpoderes', {
+                        Nombre: poderNombre,
+                        Descripcion: 'Poder agregado automáticamente'
+                    }, 'ID');
+                }
+
+                // Insertar relación
+                personajesuperpoder.push({
+                    PersonajeID: personajeId,
+                    SuperpoderID: poderId
+                });
+            });
+            db.saveTable('c_r_o', 'personajesuperpoder', personajesuperpoder);
+
+            // Redirigir a la vista de Relacionales 1 para ver el resultado
+            window.location.href = 'relacionales01.html';
+        });
+    });
+</script>
+</body>
+</html>

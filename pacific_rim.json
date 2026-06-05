@@ -1,0 +1,11 @@
+{
+  "jaegers": [
+    {"id": 1, "nombre": "Gipsy Danger", "pais": "Estados Unidos", "generacion": 3, "altura_m": 79.2, "peso_ton": 1980, "estado": "Destruido"},
+    {"id": 2, "nombre": "Striker Eureka", "pais": "Australia", "generacion": 5, "altura_m": 76.2, "peso_ton": 1850, "estado": "Destruido"},
+    {"id": 3, "nombre": "Cherno Alpha", "pais": "Rusia", "generacion": 1, "altura_m": 85.3, "peso_ton": 2412, "estado": "Destruido"},
+    {"id": 4, "nombre": "Crimson Typhoon", "pais": "China", "generacion": 4, "altura_m": 76.2, "peso_ton": 1722, "estado": "Destruido"}
+  ],
+  "batallas": [],
+  "kaijus": [],
+  "pilotos": []
+}

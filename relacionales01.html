@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eduardo Mizael Ruiz Santiago</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fuente -->
+    <link href="https://fonts.cdnfonts.com/css/zachary" rel="stylesheet">
+
+    <style>
+        body{
+            background: linear-gradient(135deg, #0a0f1f, #0f172a);
+            color:#e0e7ff; 
+        }
+        h1{
+            font-family:'Dancing Script', cursive;
+            color:#60a5fa; 
+            text-align:center;
+            margin-top: 20px;
+        }
+        .navbar{
+            background-color:#0f172a;
+            border:none;
+        }
+        .navbar-brand,
+        .navbar-nav .nav-link{
+            color:#e0e7ff !important;
+            font-family:'Lora', serif;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link:hover{
+            color:#38bdf8 !important; 
+        }
+        .dropdown-menu{
+            background-color:#0f172a;
+            border:1px solid #1e293b;
+        }
+        .dropdown-menu .dropdown-item{
+            color:#e0e7ff;
+            font-family:'Lora', serif;
+        }
+        .dropdown-menu .dropdown-item:hover{
+            background-color:#1e293b;
+            color:#38bdf8;
+        }
+        .jumbotron{
+            background: rgba(15, 23, 42, 0.9);
+            color:#e0e7ff;
+            padding:40px;
+            border-radius:10px;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+        .table{
+            background: rgba(2, 6, 23, 0.9);
+            color:#e0e7ff;
+        }
+        thead{
+            background: linear-gradient(90deg, #1e3a8a, #2563eb);
+            color:#fff;
+        }
+        tbody tr:hover{
+            background: rgba(56, 189, 248, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<center><h1>Bienvenidos a la pagina de Mizael Ruiz</h1></center>
+<nav class="navbar navbar-expand-lg" style="background-color:#584E59;">
+  <div class="container">
+    <a class="navbar-brand text-white" href="index.html">Inicio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="mostrar.html">Mostrar Datos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="meterdatos.html">Meter Datos</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Unidad 2
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="relacionales01.html">Relacionales 1</a></li>
+            <li><a class="dropdown-item" href="relacionales02.html">Relacionales 2</a></li>
+            <li><a class="dropdown-item" href="capturadebasededatos.html">Captura de base de datos</a></li>
+            <li><a class="dropdown-item" href="pacificrim.html">Pacific Rim</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<div class="container" style="margin-top: 100px;">
+    <div class="jumbotron">
+        <h1 class="text-center" style="margin-bottom: 30px; color: #38bdf8;">Aqui se vera mi tabla</h1>
+        <div class="table-responsive">
+            <table class="table table-hu" style="background: rgba(0,0,0,0.6); color: #ddd; border-radius: 12px; overflow: hidden; border-collapse: separate; border-spacing: 0;">
+                <thead style="background: #F2C94C; color: #000; font-family: 'Oswald', sans-serif;">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Alias</th>
+                        <th>Fecha de Creación</th>
+                        <th>Descripción</th>
+                        <th>Título de Cómic</th>
+                        <th>Superpoder</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-body">
+                    <tr>
+                        <td colspan="7" class="text-center">Cargando relaciones de base de datos...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="db.js"></script>
+<script>
+    db.ready.then(() => {
+        const tbody = document.getElementById('tabla-body');
+        
+        // Cargar tablas de la base de datos c_r_o
+        const personajes = db.get('c_r_o', 'personajes');
+        const comics = db.get('c_r_o', 'comics');
+        const superpoderes = db.get('c_r_o', 'superpoderes');
+        const personajecomic = db.get('c_r_o', 'personajecomic');
+        const personajesuperpoder = db.get('c_r_o', 'personajesuperpoder');
+
+        // Simular INNER JOINs
+        const rows = [];
+        
+        personajes.forEach(p => {
+            // Filtrar relaciones de cómics para este personaje
+            const relComics = personajecomic.filter(pc => String(pc.PersonajeID) === String(p.ID));
+            
+            // Filtrar relaciones de superpoderes para este personaje
+            const relPoderes = personajesuperpoder.filter(ps => String(ps.PersonajeID) === String(p.ID));
+
+            // INNER JOIN requiere coincidencia en ambas uniones
+            relComics.forEach(pc => {
+                const comic = comics.find(c => String(c.ID) === String(pc.ComicID));
+                if (comic) {
+                    relPoderes.forEach(ps => {
+                        const poder = superpoderes.find(s => String(s.ID) === String(ps.SuperpoderID));
+                        if (poder) {
+                            rows.push({
+                                personajeID: p.ID,
+                                personaje_nombre: p.Nombre,
+                                alias: p.Alias,
+                                fechacreacion: p.FechaDeCreacion,
+                                descripcion: p.Descripcion,
+                                titulo: comic.Titulo,
+                                nombre_superpoder: poder.Nombre
+                            });
+                        }
+                    });
+                }
+            });
+        });
+
+        // Eliminar duplicados (Simulación de SELECT DISTINCT)
+        const uniqueRows = [];
+        const seenKeys = new Set();
+        rows.forEach(r => {
+            const key = `${r.personajeID}-${r.titulo}-${r.nombre_superpoder}`;
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                uniqueRows.push(r);
+            }
+        });
+
+        // Generar HTML
+        if (uniqueRows.length > 0) {
+            let html = '';
+            uniqueRows.forEach(row => {
+                html += `
+                    <tr>
+                        <td>${row.personajeID}</td>
+                        <td><strong>${escapeHtml(row.personaje_nombre)}</strong></td>
+                        <td>${escapeHtml(row.alias)}</td>
+                        <td>${escapeHtml(row.fechacreacion)}</td>
+                        <td>${escapeHtml(row.descripcion || '')}</td>
+                        <td>${escapeHtml(row.titulo || '')}</td>
+                        <td>${escapeHtml(row.nombre_superpoder || '')}</td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        } else {
+            tbody.innerHTML = `<tr><td colspan="7" class="text-center">No hay datos para mostrar</td></tr>`;
+        }
+    }).catch(err => {
+        document.getElementById('tabla-body').innerHTML = `
+            <tr><td colspan="7" style="color:#e55; text-align:center;">Error al cargar base de datos: ${err}</td></tr>
+        `;
+    });
+
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+</script>
+</body>
+</html>

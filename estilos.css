@@ -1,0 +1,70 @@
+/* estilos.css */
+
+/* Fondo general de la página con un degradado tecnológico oscuro */
+body {
+    background: linear-gradient(135deg, #1e272e 0%, #2f3640 100%);
+    background-attachment: fixed;
+    color: #f5f6fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos para las tarjetas contenedoras */
+.panel {
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    background-color: #ffffff !important;
+    color: #2f3640;
+}
+
+/* Modificar los títulos de los bloques */
+.panel-heading {
+    border-radius: 12px 12px 0 0 !important;
+    padding: 20px !important;
+}
+
+/* Inputs del formulario más limpios y modernos */
+.form-control {
+    border: 2px solid #dcdde1;
+    border-radius: 6px;
+    height: 42px;
+    background-color: #f5f6fa;
+    color: #2f3640;
+    transition: all 0.3s ease;
+}
+
+/* Efecto cuando el usuario hace clic en un input (Focus) */
+.form-control:focus {
+    border-color: #f0ad4e;
+    box-shadow: 0 0 8px rgba(240, 173, 78, 0.5);
+    background-color: #ffffff;
+}
+
+/* Ajustes especiales para áreas de texto */
+textarea.form-control {
+    height: auto;
+}
+
+/* Estilos de la tabla en mostrar.php para que combine con el fondo oscuro */
+.table-responsive {
+    background-color: #ffffff;
+    border-radius: 0 0 12px 12px;
+}
+
+.table thead tr {
+    background-color: #f8f9fa;
+    color: #2f3640;
+    font-weight: bold;
+}
+/* Forzar que todo el texto dentro de la tabla sea visible y oscuro */
+.table tbody tr td, 
+.table tbody tr td strong,
+.table tbody tr td span {
+    color: #2f3640 !important;
+}
+
+/* Forzar que los encabezados de la tabla también tengan texto oscuro legible */
+.table thead tr th {
+    color: #1e272e !important;
+    font-weight: bold !important;
+}

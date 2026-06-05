@@ -1,0 +1,27 @@
+{
+  "universos": [
+    {"id": 1, "nombre_universo": "Marvel"},
+    {"id": 2, "nombre_universo": "DC Comics"},
+    {"id": 3, "nombre_universo": "Pacific Rim"},
+    {"id": 4, "nombre_universo": "Anime"}
+  ],
+  "superheroes": [
+    {
+      "id": 1,
+      "nombre": "Peter Parker",
+      "personaje": "Spider-Man",
+      "alias": "Spider-Man",
+      "altura": 1.78,
+      "peso": 74,
+      "poderes": "Trepar paredes, sentido arácnido, fuerza proporcional",
+      "superpoder": "Trepar paredes, sentido arácnido, fuerza proporcional",
+      "sexo": "Masculino",
+      "debilidad": "Insecticidas, sentido arácnido interrumpido",
+      "creacion": "1962-08-01",
+      "fecha_creacion": "1962-08-01",
+      "biografia": "Huérfano criado por sus tíos que obtiene poderes tras la picadura de una araña radiactiva.",
+      "descripcion": "El superhéroe que teje telarañas.",
+      "titulo_comic": "Amazing Fantasy #15"
+    }
+  ]
+}

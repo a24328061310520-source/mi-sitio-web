@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Mizael Ruiz Santiago</title>
+
+    <link rel="stylesheet" href="Mizael.css">
+</head>
+
+<body>
+
+    <h1>MAESTRO POKEMON: Eduardo Mizael Ruiz Santiago</h1>
+
+    <img src="./pokemon.jpg" class="banner" alt="Banner Pokemon">
+    
+
+    <input 
+        type="text"
+        placeholder="Pikachu"
+        id="pokeInput" 
+        name="pokeName"
+        class="placeholder"
+    >
+    <br>
+
+    <button onclick="fetchpokemon()" class="button">
+        🔍 Buscar Pokémon
+    </button>
+
+    <div class="poke-container">
+
+        <img 
+            src="./pokemon.gif"
+            alt="PokeMaster"
+            id="pokeImg"
+            class="pokeImg"
+        >
+        <br>
+
+        <div id="pokeName" class="pokeimg1"></div>
+        <div id="pokeHe" class="pokeimg1"></div>
+        <div id="pokeWe" class="pokeimg1"></div>
+        <div id="pokeType" class="pokeimg1"></div>
+        <div id="pokeitem" class="pokeimg1"></div>
+        <div id="pokemove1" class="pokeimg1"></div>
+        <div id="pokemove2" class="pokeimg1"></div>
+        <div id="pokemove3" class="pokeimg1"></div>
+        <div id="pokemove4" class="pokeimg1"></div>
+        <div id="pokeid" class="pokeimg1"></div>
+        <div id="pokeorder" class="pokeimg1"></div>
+
+    </div>
+
+    <div class="grafica">
+        <canvas id="miCanvas"></canvas>
+    </div>
+
+    <script src="Chart.js"></script>
+    <script src="pokedex.js"></script>
+
+</body>
+</html>

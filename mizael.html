@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eduardo Mizael Ruiz Santiago</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #022c22, #064e3b, #022c22);
+            color: #ecfdf5;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h2 {
+            color: #34d399;
+            text-shadow: 0 0 10px rgba(52, 211, 153, 0.4);
+            border-bottom: 2px solid #047857;
+            padding-bottom: 8px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(6, 78, 59, 0.5);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            border: 1px solid #10b981;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-weight: bold;
+            color: #a7f3d0;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        textarea {
+            padding: 10px;
+            border: 1px solid #059669;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 15px;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #34d399;
+            box-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
+            background-color: rgba(2, 44, 34, 0.9);
+        }
+
+        input[type="submit"] {
+            grid-column: span 2;
+            background: linear-gradient(90deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: rgba(2, 44, 34, 0.8);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #059669;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #047857;
+        }
+
+        th {
+            background-color: #047857;
+            color: #ecfdf5;
+        }
+
+        tr:hover {
+            background-color: rgba(52, 211, 153, 0.15);
+        }
+
+        .btn-delete {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-delete:hover {
+            background-color: #dc2626;
+        }
+
+        .nav-home {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #34d399;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .nav-home:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="nav-home">← Volver al Inicio</a>
+    <h2>Agregar Linterna Verde</h2>
+    
+    <div id="alerta-verde" style="display: none; color: #34d399; font-weight: bold; margin-bottom: 15px;">
+        Cambio realizado con éxito en el Sector 2814.
+    </div>
+
+    <form id="formulario-verde">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Nombre Real:</label>
+                <input type="text" id="nombrereal" required placeholder="Ej. Hal Jordan">
+            </div>
+            
+            <div class="form-group">
+                <label>Personaje:</label>
+                <input type="text" id="personaje" required placeholder="Ej. Green Lantern">
+            </div>
+
+            <div class="form-group">
+                <label>Altura (cm):</label>
+                <input type="number" id="altura" required placeholder="Ej. 188">
+            </div>
+
+            <div class="form-group">
+                <label>Peso (kg):</label>
+                <input type="number" id="peso" required placeholder="Ej. 86">
+            </div>
+
+            <div class="form-group">
+                <label>Sexo:</label>
+                <input type="text" id="sexo" required placeholder="Ej. Masculino">
+            </div>
+
+            <div class="form-group">
+                <label>Debilidad:</label>
+                <input type="text" id="debilidad" required placeholder="Ej. Amarillo / Miedo">
+            </div>
+
+            <div class="form-group">
+                <label>Fecha Creación:</label>
+                <input type="date" id="creation" required>
+            </div>
+
+            <div class="form-group">
+                <label>Poderes:</label>
+                <textarea id="poderes" rows="2" required placeholder="Ej. Anillo de poder de voluntad..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Biografía:</label>
+                <textarea id="biografia" rows="3" required placeholder="Ej. Piloto de pruebas que recibe el anillo..."></textarea>
+            </div>
+
+            <input type="submit" value="Guardar Personaje">
+        </div>
+    </form>
+
+    <hr style="border: 0; border-top: 1px solid #059669; margin: 40px 0;">
+
+    <h2>Lista de Registros (Sector 2814)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Real</th>
+                <th>Personaje</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th style="width: 100px;">Acción</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-body">
+            <tr>
+                <td colspan="6">Cargando registros...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="db.js"></script>
+<script>
+    function renderTabla() {
+        const tbody = document.getElementById('tabla-body');
+        const registros = db.get('batman', 'linterna_verde');
+
+        if (registros.length > 0) {
+            let html = '';
+            registros.forEach(fila => {
+                html += `
+                    <tr>
+                        <td>${fila.id}</td>
+                        <td><strong>${escapeHtml(fila.nombrereal)}</strong></td>
+                        <td>${escapeHtml(fila.personaje)}</td>
+                        <td>${fila.altura} cm</td>
+                        <td>${fila.peso} kg</td>
+                        <td>
+                            <button class="btn-delete" onclick="borrarRegistro(${fila.id}, '${escapeQuote(fila.nombrereal)}')">Eliminar</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        } else {
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align: center;">No hay registros de Linterna Verde.</td></tr>`;
+        }
+    }
+
+    function borrarRegistro(id, nombre) {
+        if (confirm(`¿Seguro que deseas eliminar a ${nombre}?`)) {
+            db.delete('batman', 'linterna_verde', 'id', id);
+            mostrarAlerta();
+            renderTabla();
+        }
+    }
+
+    function mostrarAlerta() {
+        const alerta = document.getElementById('alerta-verde');
+        alerta.style.display = 'block';
+        setTimeout(() => {
+            alerta.style.display = 'none';
+        }, 3000);
+    }
+
+    document.getElementById('formulario-verde').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const nuevoRegistro = {
+            nombrereal: document.getElementById('nombrereal').value.trim(),
+            personaje: document.getElementById('personaje').value.trim(),
+            altura: parseInt(document.getElementById('altura').value) || 0,
+            peso: parseInt(document.getElementById('peso').value) || 0,
+            sexo: document.getElementById('sexo').value.trim(),
+            debilidad: document.getElementById('debilidad').value.trim(),
+            creation: document.getElementById('creation').value,
+            poderes: document.getElementById('poderes').value.trim(),
+            biografia: document.getElementById('biografia').value.trim()
+        };
+
+        db.ready.then(() => {
+            db.insert('batman', 'linterna_verde', nuevoRegistro);
+            document.getElementById('formulario-verde').reset();
+            mostrarAlerta();
+            renderTabla();
+        });
+    });
+
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    function escapeQuote(str) {
+        return String(str).replace(/'/g, "\\'");
+    }
+
+    db.ready.then(() => {
+        renderTabla();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eduardo Mizael Ruiz Santiago</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/zachary" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body{
+            background: linear-gradient(135deg, #0b0000, #1a0000, #2b0000);
+            color:#f5eaea;
+            font-family: "Lora", serif;
+            margin:0;
+            padding:0;
+        }
+        h1{
+            font-family:'Dancing Script', cursive;
+            color:#ff4d4d;
+            text-align:center;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px black;
+            margin-top: 20px;
+        }
+        h2{
+            text-align:center;
+            color:#ff9999;
+            margin-top: 20px;
+        }
+        .navbar{
+            background: rgba(20,0,0,0.9) !important;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #ff1a1a;
+        }
+        .navbar-brand,
+        .navbar-nav .nav-link{
+            color:#ff4d4d !important;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link:hover{
+            color:#ffffff !important;
+            text-shadow: 0 0 10px #ff0000;
+        }
+        .dropdown-menu{
+            background-color:#1a0000;
+            border: 1px solid #ff1a1a;
+        }
+        .dropdown-menu .dropdown-item{
+            color:#ffcccc;
+        }
+        .dropdown-menu .dropdown-item:hover{
+            background-color:#330000;
+            color:#ffffff;
+        }
+        table{
+            margin: auto;
+            border-collapse: collapse;
+            width: 95%;
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255,0,0,0.3);
+        }
+        th{
+            background: #660000;
+            color:#ffffff;
+            padding:10px;
+        }
+        td{
+            border: 1px solid #330000;
+            padding:10px;
+            color:#f5eaea;
+        }
+        tr:nth-child(even){
+            background-color: rgba(255,0,0,0.05);
+        }
+        tr:hover{
+            background-color: rgba(255,0,0,0.2);
+            transition:0.3s;
+        }
+    </style>
+</head>
+<body>
+
+<center><h1>Bienvenidos a la pagina de Mizael Ruiz</h1></center>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand text-white" href="index.html">Inicio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Unidad 1
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="meterdatos.html">Meter Datos</a></li>
+            <li><a class="dropdown-item" href="mostrar.html">Mostrar Datos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Unidad 2
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="relacionales01.html">Relacionales 1</a></li>
+            <li><a class="dropdown-item" href="relacionales02.html">Relacionales 2</a></li>
+            <li><a class="dropdown-item" href="capturadebasededatos.html">Captura de base de datos</a></li>
+            <li><a class="dropdown-item" href="pacificrim.html">Pacific Rim</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h1>Cine</h1>
+<h2>Películas</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Año</th>
+            <th>Director</th>
+            <th>Actores</th>
+            <th>Personajes</th>
+        </tr>
+    </thead>
+    <tbody id="cine-tabla-body">
+        <tr>
+            <td colspan="6" class="text-center">Cargando datos de películas...</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    // Limpiar base de datos obsoleta en localStorage si contiene películas incorrectas o está vacía
+    try {
+        const localCine = localStorage.getItem('db_cine');
+        if (localCine) {
+            const parsed = JSON.parse(localCine);
+            const isOutdated = localCine.includes('Pacific Rim');
+            const isEmpty = !parsed.peliculas || parsed.peliculas.length === 0;
+            if (isOutdated || isEmpty) {
+                localStorage.removeItem('db_cine');
+                window.location.reload();
+            }
+        } else {
+            // Si no existe, también podemos limpiar por seguridad
+            localStorage.removeItem('db_cine');
+        }
+    } catch (e) {
+        console.error(e);
+    }
+</script>
+<script src="db.js"></script>
+<script>
+    db.ready.then(() => {
+        const tbody = document.getElementById('cine-tabla-body');
+        
+        // Obtener tablas de la base de datos "cine"
+        const peliculas = db.get('cine', 'peliculas');
+        const directores = db.get('cine', 'directores');
+        const actores = db.get('cine', 'actores');
+        const peliculaactor = db.get('cine', 'peliculaactor');
+
+        // Simular LEFT JOINs y GROUP BY (por PeliculaID)
+        if (peliculas.length > 0) {
+            let html = '';
+            
+            peliculas.forEach(p => {
+                // Director
+                const dir = directores.find(d => String(d.DirectorID) === String(p.DirectorID));
+                const directorNombre = dir ? dir.Nombre : 'Desconocido';
+
+                // Actores y Personajes de la película
+                const rels = peliculaactor.filter(pa => String(pa.PeliculaID) === String(p.PeliculaID));
+                
+                const actorNombres = [];
+                const personajeNombres = [];
+
+                rels.forEach(rel => {
+                    const actor = actores.find(a => String(a.ActorID) === String(rel.ActorID));
+                    if (actor) {
+                        actorNombres.push(actor.Nombre);
+                    }
+                    if (rel.Personaje) {
+                        personajeNombres.push(rel.Personaje);
+                    }
+                });
+
+                // Simular GROUP_CONCAT(DISTINCT ...)
+                const uniqueActors = [...new Set(actorNombres)].join(', ');
+                const uniquePersonajes = [...new Set(personajeNombres)].join(', ');
+
+                html += `
+                    <tr>
+                        <td>${p.PeliculaID}</td>
+                        <td><strong>${escapeHtml(p.Titulo)}</strong></td>
+                        <td>${p.AnioLanzamiento}</td>
+                        <td>${escapeHtml(directorNombre)}</td>
+                        <td>${escapeHtml(uniqueActors || 'N/A')}</td>
+                        <td>${escapeHtml(uniquePersonajes || 'N/A')}</td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        } else {
+            tbody.innerHTML = `<tr><td colspan="6" class="text-center">No se encontraron datos</td></tr>`;
+        }
+    }).catch(err => {
+        document.getElementById('cine-tabla-body').innerHTML = `
+            <tr><td colspan="6" style="color:red; text-align:center;">Error al cargar películas: ${err}</td></tr>
+        `;
+    });
+
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+</script>
+</body>
+</html>

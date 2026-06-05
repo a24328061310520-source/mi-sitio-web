@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #06111d;
+    color: white;
+}
+
+header {
+    background: #071a2b;
+    padding: 25px 40px;
+    border-bottom: 4px solid #18a8df;
+}
+
+header h1 {
+    margin: 0;
+    color: #48c7ff;
+    font-size: 36px;
+}
+
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    display: inline-block;
+    background: #18a8df;
+    color: #06111d;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: #8de1ff;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1100px;
+    margin: 35px auto;
+}
+
+h2 {
+    text-align: center;
+    color: #48c7ff;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #071a2b;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(24, 168, 223, 0.35);
+}
+
+th {
+    background: #18a8df;
+    color: #06111d;
+    padding: 16px;
+    text-align: center;
+    font-size: 17px;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+    color: white;
+    border-bottom: 1px solid #1f4058;
+}
+
+tr:nth-child(even) {
+    background: #0d263b;
+}
+
+tr:hover {
+    background: #123957;
+}
+
+.formulario {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #071a2b;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 25px rgba(24, 168, 223, 0.35);
+}
+
+label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    color: #cdeeff;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #35617d;
+    border-radius: 6px;
+    background: #06111d;
+    color: white;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    background: #18a8df;
+    color: #06111d;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #8de1ff;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Mizael Ruiz Santiago</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #0b1329;
+            color: #e0e7ff;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .navbar-personalizada {
+            background-color: #1e293b !important;
+            border: none;
+            border-radius: 0;
+        }
+        .navbar-personalizada .navbar-brand {
+            color: #38bdf8 !important;
+            font-weight: bold;
+        }
+        .navbar-personalizada .nav-link-custom {
+            color: #e0e7ff !important;
+            font-weight: bold;
+        }
+        .navbar-personalizada .nav-link-custom:hover {
+            color: #38bdf8 !important;
+        }
+        .formulario-contenedor {
+            background-color: rgba(30, 41, 59, 0.7);
+            border: 1px solid #38bdf8;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        h2 {
+            text-align: center;
+            color: #38bdf8;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        label {
+            color: #94a3b8;
+            font-weight: bold;
+        }
+        .form-control {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-personalizada">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Inicio</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="mostrar.html" class="nav-link-custom">Mostrar Datos</a></li>
+      <li><a href="meterdatos.html" class="nav-link-custom" style="color: #38bdf8 !important;">Meter Datos</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle nav-link-custom" data-toggle="dropdown" href="#">Unidad 2 <span class="caret"></span></a>
+        <ul class="dropdown-menu" style="background-color: #1e293b;">
+          <li><a href="relacionales01.html" style="color: #e0e7ff;">Relacionales 1</a></li>
+          <li><a href="relacionales02.html" style="color: #e0e7ff;">Relacionales 2</a></li>
+          <li><a href="capturadebasededatos.html" style="color: #e0e7ff;">Captura de base de datos</a></li>
+          <li><a href="pacificrim.html" style="color: #e0e7ff;">Pacific Rim</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            
+            <h2>Registrar Personaje</h2>
+            
+            <div id="mensaje-status"></div>
+
+            <div class="formulario-contenedor">
+                <form id="formulario-registro">
+                    
+                    <div class="form-group">
+                        <label>Nombre Real:</label>
+                        <input type="text" id="nombre" class="form-control" required placeholder="Ej. Peter Parker">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Alias / Nombre de Héroe:</label>
+                        <input type="text" id="alias" class="form-control" required placeholder="Ej. Spider-Man">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha de Creación:</label>
+                        <input type="date" id="fecha_creacion" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descripción:</label>
+                        <input type="text" id="descripcion" class="form-control" required placeholder="Ej. El superhéroe que teje telarañas.">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Título del Cómic Debut:</label>
+                        <input type="text" id="titulo_comic" class="form-control" required placeholder="Ej. Amazing Fantasy #15">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Superpoder Principal:</label>
+                        <input type="text" id="superpoder" class="form-control" required placeholder="Ej. Trepar paredes, sentido arácnido">
+                    </div>
+
+                    <br>
+                    <button type="submit" class="btn btn-info btn-block btn-lg" style="font-weight: bold; background-color: #0284c7; border: none;">
+                        <span class="glyphicon glyphicon-floppy-disk"></span> Guardar en la Tabla
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="db.js"></script>
+<script>
+    // Mostrar notificaciones basadas en parámetros de URL
+    window.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const status = params.get('status');
+        const msgDiv = document.getElementById('mensaje-status');
+        
+        if (status === 'ok') {
+            msgDiv.innerHTML = "<div class='alert alert-success'><b>¡Éxito!</b> El personaje se guardó correctamente.</div>";
+        } else if (status === 'error') {
+            msgDiv.innerHTML = "<div class='alert alert-danger'><b>Error:</b> No se pudieron guardar los datos.</div>";
+        }
+    });
+
+    // Procesar envío del formulario
+    document.getElementById('formulario-registro').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nombreVal = document.getElementById('nombre').value.trim();
+        const aliasVal = document.getElementById('alias').value.trim();
+        const fechaVal = document.getElementById('fecha_creacion').value;
+        const descVal = document.getElementById('descripcion').value.trim();
+        const comicVal = document.getElementById('titulo_comic').value.trim();
+        const poderVal = document.getElementById('superpoder').value.trim();
+
+        db.ready.then(() => {
+            const nuevoHeroe = {
+                nombre: nombreVal,
+                personaje: aliasVal,
+                alias: aliasVal,
+                altura: 0,
+                peso: 0,
+                poderes: poderVal,
+                superpoder: poderVal,
+                sexo: 'N/A',
+                debilidad: 'Ninguna',
+                creacion: fechaVal,
+                fecha_creacion: fechaVal,
+                biografia: descVal,
+                descripcion: descVal,
+                titulo_comic: comicVal
+            };
+
+            db.insert('universoheroes', 'superheroes', nuevoHeroe);
+            
+            // Redirigir a la lista general
+            window.location.href = 'mostrar.html';
+        });
+    });
+</script>
+</body>
+</html>

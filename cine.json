@@ -1,0 +1,62 @@
+{
+  "peliculas": [
+    {"PeliculaID": 1, "Titulo": "Inception", "AnioLanzamiento": 2010, "DirectorID": 1},
+    {"PeliculaID": 2, "Titulo": "Pulp Fiction", "AnioLanzamiento": 1994, "DirectorID": 2},
+    {"PeliculaID": 3, "Titulo": "Goodfellas", "AnioLanzamiento": 1990, "DirectorID": 3},
+    {"PeliculaID": 4, "Titulo": "Jurassic Park", "AnioLanzamiento": 1993, "DirectorID": 4},
+    {"PeliculaID": 5, "Titulo": "The Godfather", "AnioLanzamiento": 1972, "DirectorID": 5},
+    {"PeliculaID": 6, "Titulo": "The Shining", "AnioLanzamiento": 1980, "DirectorID": 6},
+    {"PeliculaID": 7, "Titulo": "Psycho", "AnioLanzamiento": 1960, "DirectorID": 7},
+    {"PeliculaID": 8, "Titulo": "Titanic", "AnioLanzamiento": 1997, "DirectorID": 8},
+    {"PeliculaID": 9, "Titulo": "The Lord of the Rings", "AnioLanzamiento": 2001, "DirectorID": 9},
+    {"PeliculaID": 10, "Titulo": "Fight Club", "AnioLanzamiento": 1999, "DirectorID": 10}
+  ],
+  "directores": [
+    {"DirectorID": 1, "Nombre": "Christopher Nolan", "Nacionalidad": "Británica", "FechaNacimiento": "1970-07-30"},
+    {"DirectorID": 2, "Nombre": "Quentin Tarantino", "Nacionalidad": "Estadounidense", "FechaNacimiento": "1963-03-27"},
+    {"DirectorID": 3, "Nombre": "Martin Scorsese", "Nacionalidad": "Estadounidense", "FechaNacimiento": "1942-11-17"},
+    {"DirectorID": 4, "Nombre": "Steven Spielberg", "Nacionalidad": "Estadounidense", "FechaNacimiento": "1946-12-18"},
+    {"DirectorID": 5, "Nombre": "Francis Ford Coppola", "Nacionalidad": "Estadounidense", "FechaNacimiento": "1939-04-07"},
+    {"DirectorID": 6, "Nombre": "Stanley Kubrick", "Nacionalidad": "Estadounidense", "FechaNacimiento": "1928-07-26"},
+    {"DirectorID": 7, "Nombre": "Alfred Hitchcock", "Nacionalidad": "Británica", "FechaNacimiento": "1899-08-13"},
+    {"DirectorID": 8, "Nombre": "James Cameron", "Nacionalidad": "Canadiense", "FechaNacimiento": "1954-08-16"},
+    {"DirectorID": 9, "Nombre": "Peter Jackson", "Nacionalidad": "Neozelandesa", "FechaNacimiento": "1961-10-31"},
+    {"DirectorID": 10, "Nombre": "David Fincher", "Nacionalidad": "Estadounidense", "FechaNacimiento": "1962-08-28"}
+  ],
+  "actores": [
+    {"ActorID": 1, "Nombre": "Leonardo DiCaprio", "PremioOscar": 1},
+    {"ActorID": 2, "Nombre": "Brad Pitt", "PremioOscar": 1},
+    {"ActorID": 3, "Nombre": "Robert De Niro", "PremioOscar": 1},
+    {"ActorID": 4, "Nombre": "Tom Hanks", "PremioOscar": 1},
+    {"ActorID": 5, "Nombre": "Al Pacino", "PremioOscar": 1},
+    {"ActorID": 6, "Nombre": "Jack Nicholson", "PremioOscar": 1},
+    {"ActorID": 7, "Nombre": "Marlon Brando", "PremioOscar": 1},
+    {"ActorID": 8, "Nombre": "Morgan Freeman", "PremioOscar": 1},
+    {"ActorID": 9, "Nombre": "Christian Bale", "PremioOscar": 1},
+    {"ActorID": 10, "Nombre": "Samuel L. Jackson", "PremioOscar": 0},
+    {"ActorID": 11, "Nombre": "Anthony Perkins", "PremioOscar": 0},
+    {"ActorID": 12, "Nombre": "Janet Leigh", "PremioOscar": 0},
+    {"ActorID": 13, "Nombre": "Kate Winslet", "PremioOscar": 0},
+    {"ActorID": 14, "Nombre": "Elijah Wood", "PremioOscar": 0},
+    {"ActorID": 15, "Nombre": "Ian McKellen", "PremioOscar": 0},
+    {"ActorID": 16, "Nombre": "Edward Norton", "PremioOscar": 0},
+    {"ActorID": 17, "Nombre": "Elijah Wood", "PremioOscar": 0},
+    {"ActorID": 18, "Nombre": "Ian McKellen", "PremioOscar": 0}
+  ],
+  "peliculaactor": [
+    {"PeliculaID": 1, "ActorID": 1, "Personaje": "Cobb"},
+    {"PeliculaID": 1, "ActorID": 2, "Personaje": "Colaborador Ficticio"},
+    {"PeliculaID": 2, "ActorID": 10, "Personaje": "Jules Winnfield"},
+    {"PeliculaID": 3, "ActorID": 3, "Personaje": "Jimmy Conway"},
+    {"PeliculaID": 4, "ActorID": 10, "Personaje": "Ray Arnold"},
+    {"PeliculaID": 5, "ActorID": 5, "Personaje": "Michael Corleone"},
+    {"PeliculaID": 5, "ActorID": 7, "Personaje": "Vito Corleone"},
+    {"PeliculaID": 6, "ActorID": 6, "Personaje": "Jack Torrance"},
+    {"PeliculaID": 7, "ActorID": 11, "Personaje": "Norman Bates"},
+    {"PeliculaID": 7, "ActorID": 12, "Personaje": "Marion Crane"},
+    {"PeliculaID": 8, "ActorID": 1, "Personaje": "Jack Dawson"},
+    {"PeliculaID": 9, "ActorID": 14, "Personaje": "Frodo Baggins"},
+    {"PeliculaID": 9, "ActorID": 15, "Personaje": "Gandalf"},
+    {"PeliculaID": 10, "ActorID": 2, "Personaje": "Tyler Durden"}
+  ]
+}

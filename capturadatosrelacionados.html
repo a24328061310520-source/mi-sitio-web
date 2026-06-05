@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Mizael Ruiz Santiago</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="estilos.css">
+    
+    <style>
+        body {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)),
+            url('https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/02/Jujutsu-Kaisen-Gojo.jpg');
+            background-size: cover;
+            background-position: center 15%;
+            background-attachment: fixed;
+            color: white;
+        }
+        .panel-relacionado {
+            background: rgba(0, 0, 0, 0.75);
+            border: 2px solid #22d3ee;
+            border-radius: 15px;
+            margin-top: 50px;
+            box-shadow: 0 0 25px rgba(34, 211, 238, 0.3);
+        }
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #22d3ee;
+            color: white;
+        }
+        .form-control:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+        select option {
+            background: #1e272e;
+            color: white;
+        }
+        .btn-guardar {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .btn-guardar:hover {
+            transform: scale(1.03);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            
+            <div class="panel panel-default panel-relacionado">
+                <div class="panel-body" style="padding: 30px;">
+                    <h2 class="text-center" style="font-family: 'Segoe UI', sans-serif; color: #22d3ee; font-weight: bold; margin-bottom: 25px;">
+                        Captura Relacionada
+                    </h2>
+                    
+                    <form id="formulario-relacionado">
+                        <div class="form-group">
+                            <label style="color: #22d3ee;">Nombre del Superhéroe:</label>
+                            <input type="text" id="nombre" class="form-control" required placeholder="Ej. Gipsy Danger">
+                        </div>
+
+                        <div class="form-group">
+                            <label style="color: #22d3ee;">Selecciona su Universo:</label>
+                            <select id="debilidad" class="form-control" required>
+                                <option value="">-- Elige una opción --</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="color: #22d3ee;">Poder Principal:</label>
+                            <input type="text" id="poderes" class="form-control" required placeholder="Habilidades">
+                        </div>
+
+                        <br>
+                        <button type="submit" class="btn btn-block btn-lg btn-guardar">
+                            Guardar Registro
+                        </button>
+                        
+                        <hr style="border-top: 1px solid rgba(34, 211, 238, 0.2);">
+                        <a href="mostrar.html" class="btn btn-default btn-block" style="background: transparent; color: white; border: 1px solid white;">
+                            Ir a la Lista General
+                        </a>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Cargar base de datos local -->
+<script src="db.js"></script>
+<script>
+    // Ejecutar cuando db.ready se resuelva
+    db.ready.then(() => {
+        const selectUniverso = document.getElementById('debilidad');
+        const universos = db.get('universoheroes', 'universos');
+        
+        universos.forEach(uni => {
+            const opt = document.createElement('option');
+            opt.value = uni.nombre_universo;
+            opt.textContent = uni.nombre_universo;
+            selectUniverso.appendChild(opt);
+        });
+    });
+
+    // Manejar el submit del formulario
+    document.getElementById('formulario-relacionado').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nombreVal = document.getElementById('nombre').value.trim();
+        const debilidadVal = document.getElementById('debilidad').value;
+        const poderesVal = document.getElementById('poderes').value.trim();
+
+        if (nombreVal && debilidadVal) {
+            const nuevoHeroe = {
+                nombre: nombreVal,
+                personaje: nombreVal, // Copiar nombre como personaje por compatibilidad
+                altura: 0,
+                peso: 0,
+                poderes: poderesVal,
+                sexo: 'N/A',
+                debilidad: debilidadVal,
+                creacion: new Date().toISOString().split('T')[0],
+                biografia: 'Registrado desde captura relacionada.'
+            };
+
+            db.insert('universoheroes', 'superheroes', nuevoHeroe);
+            
+            // Redirigir indicando éxito (como hacía procesar_formulario.php)
+            window.location.href = 'meterdatos.html?status=ok';
+        } else {
+            window.location.href = 'meterdatos.html?status=error';
+        }
+    });
+</script>
+</body>
+</html>

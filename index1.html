@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eduardo Mizael Ruiz Santiago</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: radial-gradient(circle, #0f172a, #020617);
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            padding: 25px 20px;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 45px;
+            color: #38bdf8;
+            text-shadow: 0 0 10px #38bdf8;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            display: inline-block;
+            margin: 8px;
+            padding: 10px 15px;
+            background: #0ea5e9;
+            color: black;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            background: #38bdf8;
+            box-shadow: 0 0 12px #38bdf8;
+        }
+
+        h2 {
+            color: #38bdf8;
+            text-shadow: 0 0 8px #0ea5e9;
+            margin-top: 20px;
+        }
+
+        table {
+            margin: 40px auto;
+            border-collapse: collapse;
+            width: 80%;
+            box-shadow: 0 0 20px #0ea5e9;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #0ea5e9;
+            padding: 15px;
+            color: black;
+        }
+
+        td {
+            padding: 12px;
+            background: #020617;
+        }
+
+        tr:hover td {
+            background: #0ea5e9;
+            color: black;
+            transition: 0.3s;
+        }
+
+        .btn-delete {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-delete:hover {
+            background-color: #dc2626;
+        }
+
+        .alert-info {
+            background-color: #1e293b;
+            color: #38bdf8;
+            padding: 15px;
+            border-radius: 8px;
+            width: 50%;
+            margin: 20px auto;
+            border: 1px dashed #38bdf8;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Pacific Rim - Jaegers</h1>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="pacificrim.html">Agregar Jaeger</a>
+    </nav>
+</header>
+
+<div class="contenedor">
+    <h2>Jaegers registrados</h2>
+    
+    <div id="alerta-eliminar" style="display: none; color: #f43f5e; font-weight: bold; margin-bottom: 20px;">
+        El Jaeger fue eliminado correctamente.
+    </div>
+
+    <table id="jaegers-tabla">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>País</th>
+                <th>Generación</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>Estado</th>
+                <th style="width: 120px;">Acción</th>
+            </tr>
+        </thead>
+        <tbody id="jaegers-body">
+            <tr>
+                <td colspan="7">Cargando Jaegers...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="db.js"></script>
+<script>
+    function renderJaegers() {
+        const tbody = document.getElementById('jaegers-body');
+        const jaegers = db.get('pacific_rim', 'jaegers');
+
+        if (jaegers.length > 0) {
+            let html = '';
+            jaegers.forEach(j => {
+                html += `
+                    <tr>
+                        <td><strong>${escapeHtml(j.nombre)}</strong></td>
+                        <td>${escapeHtml(j.pais || 'Desconocido')}</td>
+                        <td>Gen ${j.generacion || '1'}</td>
+                        <td>${j.altura_m || '0'} m</td>
+                        <td>${j.peso_ton || '0'} toneladas</td>
+                        <td>${escapeHtml(j.estado || 'Activo')}</td>
+                        <td>
+                            <button class="btn-delete" onclick="borrarJaeger(${j.id}, '${escapeQuote(j.nombre)}')">Borrar</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        } else {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="7">
+                        <div class="alert-info">No hay Jaegers registrados todavía. Puedes agregar uno en el formulario.</div>
+                    </td>
+                </tr>
+            `;
+        }
+    }
+
+    function borrarJaeger(id, nombre) {
+        if (confirm(`¿Seguro que deseas borrar el Jaeger ${nombre}?`)) {
+            db.delete('pacific_rim', 'jaegers', 'id', id);
+            
+            const alerta = document.getElementById('alerta-eliminar');
+            alerta.style.display = 'block';
+            setTimeout(() => {
+                alerta.style.display = 'none';
+            }, 3000);
+
+            renderJaegers();
+        }
+    }
+
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    function escapeQuote(str) {
+        return String(str).replace(/'/g, "\\'");
+    }
+
+    db.ready.then(() => {
+        renderJaegers();
+    });
+</script>
+</body>
+</html>
